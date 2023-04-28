@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+  namespace: argocd
+spec:
+  project: infrastructure
+  destination:
+    name: in-cluster
+    namespace: argocd
+  source:
+    repoURL: https://github.com/oussamaca/example-argocd.git
+    targetRevision: HEAD
+    path: ./apps/argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

@@ -3,4 +3,12 @@ kind: AppProject
 metadata:
   name: infrastructure
   namespace: argocd
-spec: {}
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  destinations:
+  - namespace: '*'
+    server: '*'
+  sourceRepos:
+  - '*'
